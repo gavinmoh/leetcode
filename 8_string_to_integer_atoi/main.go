@@ -72,11 +72,3 @@ func myAtoi(s string) int {
 
 	return result
 }
-
-func main() {
-	// string := "-+12"
-	// string := "   -42"
-	// string := "9223372036854775808"
-	string := "  0000000000012345678"
-	println(myAtoi(string))
-}

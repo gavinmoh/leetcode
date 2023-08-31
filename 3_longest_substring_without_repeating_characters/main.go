@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func lengthOfLongestSubstring(s string) int {
 	// var longestSubstring int
 	// var currentSubstring int
@@ -32,17 +30,10 @@ func lengthOfLongestSubstring(s string) int {
 			}
 		}
 
-		fmt.Println(substring)
-
 		if len(substring) > len(longestSubstring) {
 			longestSubstring = substring
 		}
 	}
 
 	return len(longestSubstring)
-}
-
-func main() {
-	string := "ohvhjdml"
-	fmt.Println(lengthOfLongestSubstring(string))
 }

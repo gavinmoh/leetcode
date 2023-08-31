@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func expandAroundCenter(s string, left int, right int) string {
 	// left must be >= 0, since array starts at 0
 	// right must be < len(s), since array ends at len(s) - 1
@@ -33,8 +31,4 @@ func longestPalindrome(s string) string {
 		}
 	}
 	return longest
-}
-
-func main() {
-	fmt.Println(longestPalindrome("babad"))
 }

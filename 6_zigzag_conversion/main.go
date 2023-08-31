@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func convert(s string, numRows int) string {
 	if numRows <= 1 {
 		return s
@@ -61,38 +59,3 @@ func convert(s string, numRows int) string {
 
 	return result
 }
-
-func main() {
-	fmt.Println(convert("PAYPALISHIRING", 4))
-}
-
-// PAYPALISHIRING
-// numRows = 3
-// space = numRows - 2
-// P   A   H   N
-// A P L S I I G
-// Y   I   R
-
-// PAYPALISHIRING
-// numRows = 4
-// P     I    N
-// A   L S  I G
-// Y A   H R
-// P     I
-
-// PAYPALISHIRING
-// numRows = 5
-// P       H
-// A     S I
-// Y   I   R
-// P L     I G
-// A       N
-
-// PAYPALISHIRING
-// numRows = 6
-// P         R
-// A       I I
-// Y     H   N
-// P   S     G
-// A I
-// L
