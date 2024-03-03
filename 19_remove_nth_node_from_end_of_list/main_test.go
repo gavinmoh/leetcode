@@ -7,16 +7,36 @@ import (
 )
 
 func TestRemoveNthFromEnd(t *testing.T) {
-	// 1->2->3->4->5, and n = 2.
-	case1 := &ListNode{Val: 1, Next: &ListNode{Val: 2, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4, Next: &ListNode{Val: 5}}}}}
-	case1Result := RemoveNthFromEnd(case1, 2)
-	assert.Equal(t, 5, case1Result.Next.Next.Next.Val)
+	t.Run("test case 1", func(t *testing.T) {
+		head := &ListNode{Val: 1, Next: &ListNode{Val: 2, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4, Next: &ListNode{Val: 5}}}}}
+		n := 2
+		expected := 5
+		removeNthFromEnd(head, n)
 
-	case2 := &ListNode{Val: 1}
-	case2Result := RemoveNthFromEnd(case2, 1)
-	assert.Nil(t, case2Result)
+		assert.Equal(t, expected, head.Next.Next.Next.Val)
+	})
 
-	case3 := &ListNode{Val: 1, Next: &ListNode{Val: 2}}
-	case3Result := RemoveNthFromEnd(case3, 1)
-	assert.Equal(t, 1, case3Result.Val)
+	t.Run("test case 2", func(t *testing.T) {
+		head := &ListNode{Val: 1}
+		n := 1
+
+		assert.Nil(t, removeNthFromEnd(head, n))
+	})
+
+	t.Run("test case 3", func(t *testing.T) {
+		head := &ListNode{Val: 1, Next: &ListNode{Val: 2}}
+		n := 1
+		expected := head
+
+		assert.Equal(t, expected, removeNthFromEnd(head, n))
+		assert.Nil(t, head.Next)
+	})
+
+	t.Run("test case 4", func(t *testing.T) {
+		head := &ListNode{Val: 1, Next: &ListNode{Val: 2}}
+		n := 2
+		expected := head.Next
+
+		assert.Equal(t, expected, removeNthFromEnd(head, n))
+	})
 }
