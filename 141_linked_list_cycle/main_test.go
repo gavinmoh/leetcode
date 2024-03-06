@@ -7,20 +7,32 @@ import (
 )
 
 func TestHasCycle(t *testing.T) {
-	list1 := &ListNode{Val: 3, Next: &ListNode{Val: 2, Next: &ListNode{Val: 0, Next: &ListNode{Val: -4}}}}
-	case1 := list1
-	secondNode := list1.Next
-	lastNode := list1.Next.Next.Next
-	lastNode.Next = secondNode
-	assert.Equal(t, true, HasCycle(case1))
+	t.Run("test case 1", func(t *testing.T) {
+		head := &ListNode{Val: 3, Next: &ListNode{Val: 2, Next: &ListNode{Val: 0, Next: &ListNode{Val: -4}}}}
+		second := head.Next
+		last := head.Next.Next.Next
+		last.Next = second
 
-	list2 := &ListNode{Val: 1, Next: &ListNode{Val: 2}}
-	case2 := list2
-	lastNode = list2.Next
-	lastNode.Next = list2
-	assert.Equal(t, true, HasCycle(case2))
+		assert.True(t, hasCycle(head))
+	})
 
-	list3 := &ListNode{Val: 1}
-	case3 := list3
-	assert.Equal(t, false, HasCycle(case3))
+	t.Run("test case 2", func(t *testing.T) {
+		head := &ListNode{Val: 1, Next: &ListNode{Val: 2}}
+		last := head.Next
+		last.Next = head
+
+		assert.True(t, hasCycle(head))
+	})
+
+	t.Run("test case 3", func(t *testing.T) {
+		head := &ListNode{Val: 1}
+
+		assert.False(t, hasCycle(head))
+	})
+
+	t.Run("test case 4", func(t *testing.T) {
+		head := &ListNode{Val: 1, Next: &ListNode{Val: 2}}
+
+		assert.False(t, hasCycle(head))
+	})
 }

@@ -5,21 +5,16 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func HasCycle(head *ListNode) bool {
-	cycle := false
-	// Use a map to keep track of nodes we've seen
-	nodes := make(map[*ListNode]bool)
+func hasCycle(head *ListNode) bool {
+	fast, slow := head, head
 
-	for head != nil {
-		// If we've seen this node before, we have a cycle
-		if _, ok := nodes[head]; ok {
-			cycle = true
-			break
+	for fast != nil && fast.Next != nil {
+		if fast.Next == slow {
+			return true
 		}
-		// Otherwise, add it to the map and move on
-		nodes[head] = true
-		head = head.Next
+		fast = fast.Next.Next
+		slow = slow.Next
 	}
 
-	return cycle
+	return false
 }
