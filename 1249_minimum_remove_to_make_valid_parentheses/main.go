@@ -14,28 +14,25 @@ func minRemoveToMakeValid(s string) string {
 		}
 	}
 
-	filtered := []rune{}
-	for _, char := range reverse(stack) {
-		if char == '(' && count > 0 {
+	filtered := make([]rune, len(stack)-count)
+	j := len(stack) - count - 1
+	for i := len(stack) - 1; i >= 0; i-- {
+		if stack[i] == '(' && count > 0 {
 			count--
 			continue
 		}
 
-		filtered = append(filtered, char)
+		filtered[j] = stack[i]
+		j--
 	}
 
-	result := ""
-	for _, char := range reverse(filtered) {
-		result += string(char)
-	}
-
-	return result
+	return string(filtered)
 }
 
-func reverse(arr []rune) []rune {
-	reversed := []rune{}
-	for i := len(arr) - 1; i >= 0; i-- {
-		reversed = append(reversed, arr[i])
-	}
-	return reversed
-}
+// func reverse(arr []rune) []rune {
+// 	reversed := []rune{}
+// 	for i := len(arr) - 1; i >= 0; i-- {
+// 		reversed = append(reversed, arr[i])
+// 	}
+// 	return reversed
+// }
