@@ -1,9 +1,5 @@
 package main
 
-import (
-	"strconv"
-)
-
 type TrieNode struct {
 	Children    [10]*TrieNode
 	IsEndOfWord bool
@@ -20,10 +16,18 @@ func Constructor() Trie {
 	return obj
 }
 
-func (this *Trie) Insert(word string) {
-	current := this.Root
-	for _, char := range word {
-		idx := char - '0'
+func (trie *Trie) Insert(number int) {
+	current := trie.Root
+	// split number into digits
+	digits := []int{}
+	for number > 0 {
+		digit := number % 10
+		digits = append(digits, digit)
+		number = number / 10
+	}
+	// iterating from backwards
+	for i := len(digits) - 1; i >= 0; i-- {
+		idx := digits[i]
 		if current.Children[idx] != nil {
 			current = current.Children[idx]
 		} else {
@@ -38,7 +42,7 @@ func (this *Trie) Insert(word string) {
 func lexicalOrder(n int) []int {
 	trie := Constructor()
 	for i := 1; i <= n; i++ {
-		trie.Insert(strconv.Itoa(i))
+		trie.Insert(i)
 	}
 	result := []int{}
 
