@@ -7,9 +7,13 @@ import (
 )
 
 func TestMaxArea(t *testing.T) {
-	case1 := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
-	assert.Equal(t, 49, MaxArea(case1))
+	t.Run("test case 1", func(t *testing.T) {
+		height := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
+		assert.Equal(t, 49, maxArea(height))
+	})
 
-	case2 := []int{1, 1}
-	assert.Equal(t, 1, MaxArea(case2))
+	t.Run("test case 2", func(t *testing.T) {
+		height := []int{1, 1}
+		assert.Equal(t, 1, maxArea(height))
+	})
 }
