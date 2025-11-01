@@ -84,4 +84,24 @@ func TestModifiedList(t *testing.T) {
 			head = head.Next
 		}
 	})
+
+	t.Run("test case 4", func(t *testing.T) {
+		nums := []int{9, 2, 5}
+		head := &ListNode{
+			Val: 2,
+			Next: &ListNode{
+				Val: 10,
+				Next: &ListNode{
+					Val: 9,
+				},
+			},
+		}
+		expectedOutput := []int{10}
+
+		head = modifiedList(nums, head)
+		for _, expected := range expectedOutput {
+			assert.Equal(t, expected, head.Val)
+			head = head.Next
+		}
+	})
 }
