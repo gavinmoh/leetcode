@@ -1,0 +1,18 @@
+package main
+
+import "sort"
+
+func findFinalValue(nums []int, original int) int {
+	sort.Ints(nums)
+	for _, num := range nums {
+		if num == original {
+			original *= 2
+		}
+
+		if num > original {
+			break
+		}
+	}
+
+	return original
+}
